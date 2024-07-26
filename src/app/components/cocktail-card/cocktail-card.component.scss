@@ -5,7 +5,8 @@
   .cocktail-card-left {
     grid: left;
     img {
-      border-radius: 1rem;
+      border-radius: 14px 0 0 14px;
+      height: 100%;
     }
   }
   .cocktail-card-right {
