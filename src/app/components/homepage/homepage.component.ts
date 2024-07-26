@@ -18,17 +18,7 @@ export class HomepageComponent {
   protected cocktails$: Observable<Cocktail[]>;
 
   ngOnInit(): void {
-    // this.http.get<Cocktail[]>('/cockails').subscribe((response: Cocktail[]) => {
-    //   console.log('--- response:', response)
-    //   this.cocktails$ = response
-    // })
-
-    this.cocktails$ = this.http.get<Cocktail[]>('/cockails')
-      .pipe(
-        tap(response => {
-          console.log('--- response:', response)
-        })
-      )
+    this.cocktails$ = this.http.get<Cocktail[]>('/cockails');
   }
 
   onFilter(value?: string): void {

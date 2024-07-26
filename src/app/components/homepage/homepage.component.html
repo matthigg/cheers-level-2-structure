@@ -10,8 +10,8 @@
 
 <div *ngIf="cocktails$ | async as cocktails">
 
-  <ng-container *ngFor="let cocktailData of cocktails">
+  <div class="cocktail-wrapper" *ngFor="let cocktailData of cocktails">
     <app-cocktail-card [cocktailData]="cocktailData"></app-cocktail-card>
-  </ng-container>
+  </div>
   
 </div>

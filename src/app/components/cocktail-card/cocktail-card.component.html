@@ -1,5 +1,13 @@
-<h1>{{ cocktailData?.name }}</h1>
-<div>{{ cocktailData?.isAlcoholic }}</div>
-<img src="{{ cocktailData?.imageUrl }}" />
-<div *ngFor="let ingredient of cocktailData?.ingredients">{{ ingredient }}</div>
-<br />
+<div class="cocktail-card-wrapper">
+  <div class="cocktail-card-left">
+    <img src="{{ cocktailData?.imageUrl }}" />
+  </div>
+  
+  <div class="cocktail-card-right">
+    <h1>{{ cocktailData?.name }}</h1>
+    <div class="alcoholic">{{ cocktailData?.isAlcoholic }}</div>
+    <ul>
+      <li *ngFor="let ingredient of cocktailData?.ingredients">{{ ingredient }}</li>
+    </ul>
+  </div>
+</div>

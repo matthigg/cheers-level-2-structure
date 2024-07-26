@@ -1,0 +1,25 @@
+.cocktail-card-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "left right right";
+  .cocktail-card-left {
+    grid: left;
+    img {
+      border-radius: 1rem;
+    }
+  }
+  .cocktail-card-right {
+    grid: right;
+    padding-left: 1rem;
+    h1 {
+      margin-left: 0;
+    }
+    .alcoholic {
+      background-color: cornflowerblue;
+      border-radius: 1rem;
+      color: white;
+      display: inline-block;
+      padding: 0 0.5rem;
+    }
+  }
+}
