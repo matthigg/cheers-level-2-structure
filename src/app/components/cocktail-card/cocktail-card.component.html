@@ -4,8 +4,20 @@
   </div>
   
   <div class="cocktail-card-center">
-    <h1>{{ cocktailData.name }}</h1>
-    <div class="alcoholic">{{ cocktailData.isAlcoholic | alcoholic }}</div>
+    <h1>
+      <a routerLink="cocktails/{{ cocktailData.id }}">
+        {{ cocktailData.name }}
+      </a>
+    </h1>
+    <div 
+      [ngClass]="{
+        'alcohol-tab': true,
+        'alcoholic': cocktailData.isAlcoholic,
+        'non-alcoholic': !cocktailData.isAlcoholic
+      }"
+    >
+      {{ cocktailData.isAlcoholic | alcoholic }}
+    </div>
     <ul>
       <li *ngFor="let ingredient of cocktailData.ingredients">{{ ingredient }}</li>
     </ul>
