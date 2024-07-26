@@ -5,7 +5,7 @@
   
   <div class="cocktail-card-right">
     <h1>{{ cocktailData?.name }}</h1>
-    <div class="alcoholic">{{ cocktailData?.isAlcoholic }}</div>
+    <div class="alcoholic">{{ cocktailData?.isAlcoholic | alcoholic }}</div>
     <ul>
       <li *ngFor="let ingredient of cocktailData?.ingredients">{{ ingredient }}</li>
     </ul>
