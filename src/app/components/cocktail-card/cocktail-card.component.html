@@ -3,11 +3,15 @@
     <img src="{{ cocktailData?.imageUrl }}" />
   </div>
   
-  <div class="cocktail-card-right">
+  <div class="cocktail-card-center">
     <h1>{{ cocktailData?.name }}</h1>
     <div class="alcoholic">{{ cocktailData?.isAlcoholic | alcoholic }}</div>
     <ul>
       <li *ngFor="let ingredient of cocktailData?.ingredients">{{ ingredient }}</li>
     </ul>
+  </div>
+
+  <div class="cocktail-card-right">
+    <span [id]="'star-' + cocktailData?.id"  class="icon-star"></span>
   </div>
 </div>

@@ -1,7 +1,7 @@
 .cocktail-card-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "left right right";
+  grid-template-areas: "left center right";
   .cocktail-card-left {
     grid: left;
     img {
@@ -9,8 +9,8 @@
       height: 100%;
     }
   }
-  .cocktail-card-right {
-    grid: right;
+  .cocktail-card-center {
+    grid: center;
     padding-left: 1rem;
     h1 {
       margin-left: 0;
@@ -22,5 +22,12 @@
       display: inline-block;
       padding: 0 0.5rem;
     }
+  }
+
+  .cocktail-card-right {
+    display: flex;
+    justify-content: flex-end;
+    grid: right;
+    padding: 1rem;
   }
 }
