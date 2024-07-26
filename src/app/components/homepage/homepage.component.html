@@ -1,1 +1,9 @@
-<p>homepage works!</p>
+
+<form onsubmit="return false">
+  
+  <h1>Filters</h1>
+
+  <label for="filterInput">Cocktail name</label>
+  <input #filterInput type="text" (keydown)="onFilter(filterInput.value)" />
+  
+</form>

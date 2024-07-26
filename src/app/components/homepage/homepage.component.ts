@@ -17,4 +17,10 @@ export class HomepageComponent {
     })
   }
 
+  onFilter(value?: string): void {
+
+    console.log('--- value:', value)
+    
+  }
+
 }
