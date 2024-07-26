@@ -1,1 +1,43 @@
-<p>cocktail-details works!</p>
+<button type="button" (click)="onBack()">Back</button>
+
+<div class="cocktail-details-wrapper" *ngIf="cocktailDetails$ | async as cocktailDetailsData">
+
+  <img src="{{ cocktailDetailsData.imageUrl }}" />
+
+  <div class="cocktail-details-content">
+
+    <h1>{{ cocktailDetailsData.name }}</h1>
+    <span 
+    [id]="'star-' + cocktailDetailsData.id"
+    [ngClass]="{
+      'icon-star': true,
+      'active': favoritesService.favorites().includes(+cocktailDetailsData.id)
+    }"
+    (click)="favoritesService.toggleFavorite(+cocktailDetailsData.id)"
+  ></span>
+
+    <h2>Type:</h2>
+    <div>
+      <span
+        [ngClass]="{
+          'alcohol-tab': true,
+          'alcoholic': cocktailDetailsData.isAlcoholic,
+          'non-alcoholic': !cocktailDetailsData.isAlcoholic
+        }"
+      >
+      {{ cocktailDetailsData.isAlcoholic | alcoholic }}
+      </span>
+    </div>
+    
+    <h2>Ingredients:</h2>
+    <ul class="ingredients">
+      <li *ngFor="let ingredient of cocktailDetailsData.ingredients">{{ ingredient }}</li>
+    </ul>
+
+    <h2>Instructions:</h2>
+    <div class="instructions">
+      instructions
+    </div>
+
+  </div>
+</div>
