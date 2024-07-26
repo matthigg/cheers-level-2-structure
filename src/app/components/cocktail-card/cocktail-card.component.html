@@ -1,1 +1,5 @@
-<p>cocktail-card works!</p>
+<h1>{{ cocktailData?.name }}</h1>
+<div>{{ cocktailData?.isAlcoholic }}</div>
+<img src="{{ cocktailData?.imageUrl }}" />
+<div *ngFor="let ingredient of cocktailData?.ingredients">{{ ingredient }}</div>
+<br />
