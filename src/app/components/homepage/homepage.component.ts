@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Observable, of, tap } from 'rxjs';
 import { Cocktail } from '../../shared/interfaces/cocktail';
 import { CommonModule } from '@angular/common';
 import { CocktailCardComponent } from "../cocktail-card/cocktail-card.component";
@@ -14,17 +14,24 @@ import { CocktailCardComponent } from "../cocktail-card/cocktail-card.component"
 })
 export class HomepageComponent {
   private http = inject(HttpClient);
+  private cocktails: Cocktail[];
 
   protected cocktails$: Observable<Cocktail[]>;
+  protected cocktailsSignal: WritableSignal<Cocktail[]> = signal([]);
 
   ngOnInit(): void {
-    this.cocktails$ = this.http.get<Cocktail[]>('/cockails');
+    this.cocktails$ = this.http.get<Cocktail[]>('/cockails').pipe(
+      tap(response => {
+        this.cocktails = response;
+        this.cocktailsSignal.set(response);
+      })
+    );
   }
 
-  onFilter(value?: string): void {
-
-    console.log('--- value:', value)
-
+  onFilter(value: string): void {
+    const filteredCocktails = this.cocktails.filter(cocktail => 
+      cocktail.name.toLowerCase().includes(value.toLowerCase())
+    );
+    this.cocktailsSignal.set(filteredCocktails);
   }
-
 }

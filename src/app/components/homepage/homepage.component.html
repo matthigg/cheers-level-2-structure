@@ -1,17 +1,11 @@
-
 <form onsubmit="return false">
-
   <h1>Filters</h1>
-
   <label for="filterInput">Cocktail name</label>
-  <input #filterInput type="text" (keydown)="onFilter(filterInput.value)" />
-  
+  <input #filterInput type="text" (keyup)="onFilter(filterInput.value)" />
 </form>
 
-<div *ngIf="cocktails$ | async as cocktails">
-
-  <div class="cocktail-wrapper" *ngFor="let cocktailData of cocktails">
+<div *ngIf="cocktails$ | async">
+  <div class="cocktail-wrapper" *ngFor="let cocktailData of cocktailsSignal()">
     <app-cocktail-card [cocktailData]="cocktailData"></app-cocktail-card>
   </div>
-  
 </div>

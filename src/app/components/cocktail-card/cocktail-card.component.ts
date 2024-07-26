@@ -13,7 +13,7 @@ export class CocktailCardComponent implements OnInit{
   @Input() cocktailData?: Cocktail;
 
   ngOnInit(): void {
-    console.log('--- cocktailData:', this.cocktailData)
+    // console.log('--- cocktailData:', this.cocktailData)
   }
 
 }
