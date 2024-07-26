@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { Cocktail } from '../../shared/interfaces/cocktail';
 import { CommonModule } from '@angular/common';
 import { AlcoholicPipe } from '../../shared/pipes/alcoholic.pipe';
+import { FavoritesService } from '../../services/favorites/favorites.service';
 
 @Component({
   selector: 'app-cocktail-card',
@@ -11,7 +12,9 @@ import { AlcoholicPipe } from '../../shared/pipes/alcoholic.pipe';
   styleUrl: './cocktail-card.component.scss'
 })
 export class CocktailCardComponent implements OnInit{
-  @Input() cocktailData?: Cocktail;
+  @Input() cocktailData: Cocktail;
+
+  protected favoritesService = inject(FavoritesService);
 
   ngOnInit(): void {
     // console.log('--- cocktailData:', this.cocktailData)

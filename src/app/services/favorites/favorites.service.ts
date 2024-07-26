@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { effect, inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { StorageService } from '../storage/storage.service';
 
 @Injectable({
@@ -6,14 +6,21 @@ import { StorageService } from '../storage/storage.service';
 })
 export class FavoritesService {
   private storageService = inject(StorageService<number[]>);
+  private favoritesSignal: WritableSignal<number[]> = signal(this.storageService.getStorage(this.storageService.storageKey));
 
-  constructor() { }
+  readonly favorites = this.favoritesSignal.asReadonly()
+
+  constructor() {
+    effect(() => {
+      this.storageService.setStorage(this.storageService.storageKey, this.favoritesSignal())
+    });
+  }
 
   toggleFavorite(id: number): void {
-    let favorites = this.storageService.getStorage(this.storageService.storageKey);
-    favorites.includes(id)
-      ? favorites = favorites.filter((favoriteId: number) => favoriteId !== id)
-      : favorites.push(id);
-    this.storageService.setStorage(this.storageService.storageKey, favorites);
+    if (this.favoritesSignal().includes(id)) {
+      this.favoritesSignal.update(() => { return this.favoritesSignal().filter(fav => fav !== id) });
+    } else {
+      this.favoritesSignal.update(favArray => { favArray.push(id); return favArray.slice(0) });
+    }
   }
 }
