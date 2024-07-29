@@ -20,7 +20,7 @@ export class HomepageComponent {
   protected cocktailsSignal: WritableSignal<Cocktail[]> = signal([]);
 
   ngOnInit(): void {
-    this.cocktails$ = this.http.get<Cocktail[]>('/cockails').pipe(
+    this.cocktails$ = this.http.get<Cocktail[]>('/cocktails').pipe(
       tap(response => {
         this.cocktails = response;
         this.cocktailsSignal.set(response);

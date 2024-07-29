@@ -24,7 +24,7 @@ export class CocktailDetailsComponent {
 
   ngOnInit(): void {
     console.log('--- this.cocktailId:', this.cocktailId)
-    this.cocktailDetails$ = this.http.get<Cocktail>(`/cockails/${this.cocktailId}`).pipe(
+    this.cocktailDetails$ = this.http.get<Cocktail>(`/cocktails/${this.cocktailId}`).pipe(
       tap(response => {
 
         console.log('--- response:', response)
