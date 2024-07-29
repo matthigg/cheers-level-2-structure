@@ -15,7 +15,7 @@ import { FavoritesService } from '../../services/favorites/favorites.service';
   styleUrl: './cocktail-details.component.scss'
 })
 export class CocktailDetailsComponent {
-  @Input() cocktailId: any;
+  @Input() cocktailId: string;
 
   private http = inject(HttpClient);
 
