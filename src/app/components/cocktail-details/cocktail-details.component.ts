@@ -23,16 +23,7 @@ export class CocktailDetailsComponent {
   protected cocktailDetails$: Observable<Cocktail>;
 
   ngOnInit(): void {
-    console.log('--- this.cocktailId:', this.cocktailId)
-    this.cocktailDetails$ = this.http.get<Cocktail>(`/cocktails/${this.cocktailId}`).pipe(
-      tap(response => {
-
-        console.log('--- response:', response)
-        
-        // this.cocktails = response;
-        // this.cocktailsSignal.set(response);
-      })
-    );
+    this.cocktailDetails$ = this.http.get<Cocktail>(`/cocktails/${this.cocktailId}`);
   }
 
   onBack(): void {

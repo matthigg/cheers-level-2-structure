@@ -1,20 +1,18 @@
 <button type="button" (click)="onBack()">Back</button>
 
 <div class="cocktail-details-wrapper" *ngIf="cocktailDetails$ | async as cocktailDetailsData">
-
   <img src="{{ cocktailDetailsData.imageUrl }}" />
 
   <div class="cocktail-details-content">
-
     <h1>{{ cocktailDetailsData.name }}</h1>
     <span 
-    [id]="'star-' + cocktailDetailsData.id"
-    [ngClass]="{
-      'icon-star': true,
-      'active': favoritesService.favorites().includes(+cocktailDetailsData.id)
-    }"
-    (click)="favoritesService.toggleFavorite(+cocktailDetailsData.id)"
-  ></span>
+      [id]="'star-' + cocktailDetailsData.id"
+      [ngClass]="{
+        'icon-star': true,
+        'active': favoritesService.favorites().includes(+cocktailDetailsData.id)
+      }"
+      (click)="favoritesService.toggleFavorite(+cocktailDetailsData.id)"
+    ></span>
 
     <h2>Type:</h2>
     <div>
@@ -38,6 +36,5 @@
     <div class="instructions">
       {{ cocktailDetailsData.instructions }}
     </div>
-
   </div>
 </div>
